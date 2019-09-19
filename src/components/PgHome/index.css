@@ -1,0 +1,12 @@
+.home.layout{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home .row{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
