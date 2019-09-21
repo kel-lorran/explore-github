@@ -1,0 +1,11 @@
+.icon-and-text{
+    margin-top: 10px !important;
+    & > div{
+        display: inline-block;
+        margin-right: 5px;
+    }
+    & > span{
+        position: relative;
+        bottom: 2px;
+    }
+}

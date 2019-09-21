@@ -21,6 +21,11 @@
             
         }
     }
+    ul{
+        margin: 0;
+        padding: 0 30px;
+        width: 100%;
+    }
 }
 
 
@@ -37,21 +42,28 @@ div.search-area{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    @include d(m){
+        padding: 0 30px;
+    }
 }
 
 div.property-area{
     grid-area: q3;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    ul{
+        margin-top: 15px;
+    }
 }
 
-.result ul{
-    margin: 0;
-    padding: 30px;
+div.repository-area{
+    grid-area: q4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.property-area ul{
-    width: 100%;
-}
+
 

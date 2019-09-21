@@ -1,0 +1,22 @@
+@import '../../sass/main';
+
+.my-input{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    input{
+        width: 100%;
+        max-width: 650px;
+        border: none;
+        @include d( m ){
+            max-width: 500px;
+        }
+    }
+    a{
+        display: flex;
+    }
+}
+
+span.search-btn{
+    background: $color-principal;
+}

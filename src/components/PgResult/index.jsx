@@ -97,7 +97,7 @@ class PgResult extends React.Component{
                 <div className="property-area">
                     {this.renderProfile()}
                 </div>
-                <div className="repository-ara">
+                <div className="repository-area">
                     {this.renderListRepository()}
 
                 </div>

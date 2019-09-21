@@ -1,29 +1,20 @@
 @import '../../sass/main';
 
-li.repositories *{
-    margin: 0;
-}
-li.repositories h3{
-    color: var(--color-principal);
-    font-size: 35px;
-}
-li.repositories p{
-    font-size: 20px;
-}
-li.repositories > div{
-    color: var( --color-dark-grey);
-    margin-bottom: 30px;
-}
-
 li.repositories{
     h3{
         @include tipo-1( 35);
-        color: $color-principal
+        color: $color-principal;
+        margin: 0 0 5px 0;
+        font-weight: 400;
     }
     p{
         @include tipo-1( 20);
+        margin: 0;
+        font-weight: 300;
     }
     & > div{
-        color: $color-dark-grey
+        color: $color-dark-grey;
+        margin-bottom: 25px;
+        font-weight: 300;
     }
 }

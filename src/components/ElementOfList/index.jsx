@@ -5,7 +5,7 @@ import inconStar from './img/star icon.png'
 import IconAndText from '../IconAndText'
 
 export default function ElementOfList( props){
-    let classList = `repositories`
+    let classList = `repositories `
     classList += props.classList || ''
     
     return(
