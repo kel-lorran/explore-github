@@ -1,0 +1,33 @@
+//cores
+$color-principal: #ac53f2;
+$color-black: #000;
+$color-white: #fff;
+$color-dark-grey: #5c5c5c;
+
+$font-principal: 'Raleway',sans-serif;
+
+@mixin font-family( $tipo) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @if $tipo == principal {
+        font-family: $font-principal;
+    } @else if $tipo == mono {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+    }
+}
+
+@function em( $pixel, $contexto: 16) {
+    @return $pixel / $contexto + em;
+}
+
+@mixin tipo-1( $size) {
+    font-family: $font-principal;
+    @if $size == 35 {
+        font-size: em(35);
+        line-height: em(40, 35);
+    } @else if $size == 20 {
+        font-size: em(20);
+        line-height: em(25, 20);
+    }
+}

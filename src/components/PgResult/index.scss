@@ -1,0 +1,57 @@
+@import '../../sass/main';
+
+.result{
+    &.layout{
+        height: 100vh;
+        display: grid;
+
+        grid-template-columns: 340px auto ;
+        grid-template-rows: 120px auto;
+
+        grid-template-areas:
+            'q1 q2'
+            'q3 q4';
+
+        @include d( s ){
+            grid-template-columns: auto ;
+            grid-template-rows: 75px 75px auto auto;
+
+            grid-template-areas:
+                'q1' 'q2' 'q3' 'q4';
+            
+        }
+    }
+}
+
+
+div.logo-area{
+    grid-area: q1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.search-area{
+    grid-area: q2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.property-area{
+    grid-area: q3;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.result ul{
+    margin: 0;
+    padding: 30px;
+}
+
+.property-area ul{
+    width: 100%;
+}
+

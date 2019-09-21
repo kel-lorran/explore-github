@@ -6,4 +6,11 @@
 .my-input input{
     width: 100%;
     max-width: 650px;
+    border: none;
+}
+span.search-btn{
+    background: var(--color-principal);
+}
+.my-input a{
+    display: flex;
 }

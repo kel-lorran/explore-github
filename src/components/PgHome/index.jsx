@@ -7,10 +7,8 @@ export default function PgHome( props){
     return(
         <div className="home layout">
             <div className="row">
-                <DisplayLogo />
-                
+                <DisplayLogo width="415px" height="80px" />
                 <MyInput 
-                
                 />
             </div>
         </div>

@@ -1,0 +1,37 @@
+@import './sass/main';
+
+
+:root{
+  --color-principal: #ac53f2;
+  --color-dark-grey: #5c5c5c;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0; 
+  @include font-family( principal);
+}
+
+code {
+  @include font-family( mono);
+}
+
+html,body,#root,.App{
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  color: #000;
+}
+
+li{
+  list-style-type: none;
+}
+
+.gray-shadow{
+  -webkit-box-shadow: 0px 0px 4px 0px #ccc;
+  -moz-box-shadow: 0px 0px 4px 0px #ccc;
+  box-shadow: 0px 0px 4px 0px #ccc;
+}

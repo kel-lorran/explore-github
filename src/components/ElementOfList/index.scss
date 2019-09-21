@@ -1,0 +1,29 @@
+@import '../../sass/main';
+
+li.repositories *{
+    margin: 0;
+}
+li.repositories h3{
+    color: var(--color-principal);
+    font-size: 35px;
+}
+li.repositories p{
+    font-size: 20px;
+}
+li.repositories > div{
+    color: var( --color-dark-grey);
+    margin-bottom: 30px;
+}
+
+li.repositories{
+    h3{
+        @include tipo-1( 35);
+        color: $color-principal
+    }
+    p{
+        @include tipo-1( 20);
+    }
+    & > div{
+        color: $color-dark-grey
+    }
+}

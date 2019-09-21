@@ -11,8 +11,8 @@ export default function DisplayLogo( props){
         <div className="display-logo">
             <Image
                 arquivo={logo}
-                width="415px"
-                height="81px"
+                width={props.width}
+                height={props.height}
                 fill="contain"
             />
         </div>

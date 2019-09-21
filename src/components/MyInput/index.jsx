@@ -1,7 +1,11 @@
-import React from 'react'
+import React,{ useState} from 'react'
 import './index.css'
+import Image from '../Image';
+import searchIcon from './img/Search Icon.png'
+import { Link} from 'react-router-dom'
 
 export default function MyInput( props){
+    const [param, setParam ] = useState('')
     let heightReceived = props.height || '50px'
     let fontSizeReceived = props.fontSize || '20px'
 
@@ -15,10 +19,10 @@ export default function MyInput( props){
         width: `calc( 2 * ${ heightReceived})`
     }
 
-    let onChange = props.onChange || null
     let isRequired = props.required || false
     let defaultValue = props.defaultValue || ''
     let typeOfInput = props.type || 'text'
+
 
     return(
         <div className="my-input">
@@ -29,11 +33,14 @@ export default function MyInput( props){
                 type={typeOfInput} 
                 required={isRequired}
                 defaultValue={defaultValue}
-                onChange={onChange}
+                onChange={(e) => setParam( e.target.value)}
+                className="gray-shadow"
             />
-            <span style={styleSearchBtn} className="search-btn">
-                btn
-            </span>
+            <Link to={`/result/${param}`} >
+                <span style={styleSearchBtn} className="search-btn gray-shadow">
+                    <Image width="100%" height="100%" arquivo={searchIcon} fill="initial" />
+                </span>
+            </Link>
         </div>
     )
 }
