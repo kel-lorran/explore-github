@@ -41,7 +41,7 @@ export default function MyInput( props){
                 className="gray-shadow"
                 onKeyDown={handleKeyEnter}
             />
-            <a onClick={ props.onClick}>
+            <a href="#" onClick={ props.onClick}>
                 <span style={styleSearchBtn} className="search-btn gray-shadow">
                     <Image width="100%" height="100%" arquivo={searchIcon} fill="initial" />
                 </span>
