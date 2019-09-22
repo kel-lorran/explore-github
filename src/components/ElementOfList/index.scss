@@ -17,4 +17,7 @@ li.repositories{
         margin-bottom: 25px;
         font-weight: 300;
     }
+    @include d( s) {
+        text-align: center;
+    }
 }

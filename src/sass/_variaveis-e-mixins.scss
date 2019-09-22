@@ -23,6 +23,10 @@ $font-principal: 'Raleway',sans-serif;
 
 @mixin tipo-1( $size) {
     font-family: $font-principal;
+    @if $size == 40 {
+        font-size: em(40);
+        line-height: em(45, 40);
+    }
     @if $size == 35 {
         font-size: em(35);
         line-height: em(40, 35);

@@ -7,6 +7,7 @@ export default function Routes( props){
     return(
         <Switch>
             <Route exact path='/' component={PgHome} />
+            <Route exact path='/result' component={PgResult} />
             <Route path='/result/:user' component={PgResult} />
             <Redirect from='*' to='/' component={PgHome} />
         </Switch>

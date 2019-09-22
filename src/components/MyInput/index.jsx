@@ -1,11 +1,9 @@
-import React,{ useState} from 'react'
+import React from 'react'
 import './index.scss'
 import Image from '../Image';
 import searchIcon from './img/Search Icon.png'
-import { Link} from 'react-router-dom'
 
 export default function MyInput( props){
-    const [param, setParam ] = useState('')
     let heightReceived = props.height || '50px'
     let fontSizeReceived = props.fontSize || '20px'
 
@@ -23,6 +21,12 @@ export default function MyInput( props){
     let defaultValue = props.defaultValue || ''
     let typeOfInput = props.type || 'text'
 
+    const handleKeyEnter = (e) => {
+        if (e.key === 'Enter') {
+            props.onClick(e);
+        }
+    }
+
 
     return(
         <div className="my-input">
@@ -33,14 +37,15 @@ export default function MyInput( props){
                 type={typeOfInput} 
                 required={isRequired}
                 defaultValue={defaultValue}
-                onChange={(e) => setParam( e.target.value)}
+                onChange={props.onChange}
                 className="gray-shadow"
+                onKeyDown={handleKeyEnter}
             />
-            <Link to={`/result/${param}`} >
+            <a onClick={ props.onClick}>
                 <span style={styleSearchBtn} className="search-btn gray-shadow">
                     <Image width="100%" height="100%" arquivo={searchIcon} fill="initial" />
                 </span>
-            </Link>
+            </a>
         </div>
     )
 }

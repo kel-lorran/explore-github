@@ -22,8 +22,9 @@ class PgResult extends React.Component{
         super( props)
 
         this.state = {
-            isLoading: false,
-            githubProfile: new GithubUser( props.match.params.user),
+            isLoading: true,
+            paramUser: props.match.params.user,
+            githubProfile: new GithubUser( ),
             notFound: false
         }
     }
@@ -32,32 +33,55 @@ class PgResult extends React.Component{
         this.hasParam()
     }
 
-    async getDataOfUser(){
-        let user = this.state.githubProfile
+    async getDataOfUser( user){
+        let paramUser = this.state.paramUser
         try{
             this.setState( {isLoading: true})
-            let result = await axios.get( `https://api.github.com/users/${user.login}` )
+            let result = await axios.get( `https://api.github.com/users/${paramUser}` )
             user.name = result.data.name;
             user.avatarUrl = result.data['avatar_url'];
             user.company = result.data.company;
             user.location = result.data.location;
             user.followers = result.data.followers;
-            let repositories = await axios.get( `https://api.github.com/users/${user.login}/repos` )
+            let repositories = await axios.get( `https://api.github.com/users/${paramUser}/repos` )
 
             user.repositories = repositories.data.map( (e, i) => new Repository( e.name, e.description, e['stargazers_count'], e['html_url']))
-            this.setState( { githubProfile: user})
+            this.setState( {
+                githubProfile: user,
+                notFound: false
+            })
         }catch( er){
             console.log( er)
             this.setState( {notFound: true})
         }finally{
-            this.setState( {isLoading: false})
+            this.setState( {
+                isLoading: false,
+                githubProfile: user
+            })
         }
     }
 
     hasParam(){
-        if( this.state.githubProfile.login){
-            this.getDataOfUser()
+        let userEmpty = new GithubUser( )
+        if( this.state.paramUser){
+            this.getDataOfUser( userEmpty)
+        } else{
+            this.setState({
+                githubProfile: userEmpty,
+                notFound: true,
+                isLoading: false
+            })
         }
+    }
+    setUserLogin( e){
+        let val = e.target.value
+        this.setState( { paramUser: val})
+    }
+    handleSubmit(e){
+        e.preventDefault()
+        let paramUser = this.state.paramUser
+        this.hasParam()
+        this.props.history.push(`/result/${paramUser}`)
     }
 
     renderListRepository(){
@@ -83,6 +107,28 @@ class PgResult extends React.Component{
                <Profile user={ user} />
             )
     }
+    renderNotFound(){
+        let isLoading = this.state.isLoading
+        let notFound = this.state.notFound
+        if(! isLoading && notFound)
+            return(
+                <div className="mesage-not-found">
+                    <p >User not found :(</p>
+                </div>
+            )
+    }
+    renderLoader(){
+        let isLoading = this.state.isLoading
+        let notFound = this.state.notFound
+        if(isLoading && !notFound)
+            return(
+                <div className="loader">
+                    <p className="fa-3x">
+                        <i className="fas fa-circle-notch fa-spin"></i>
+                    </p>
+                </div>
+            )
+    }
 
     render(){
         return(
@@ -92,14 +138,17 @@ class PgResult extends React.Component{
                 </div>
                 <div className="search-area">
                     <MyInput
-                    />              
+                        onClick={this.handleSubmit.bind(this)}
+                        onChange={this.setUserLogin.bind(this)} 
+                    />            
                 </div>
+                {this.renderNotFound()}
+                {this.renderLoader()}
                 <div className="property-area">
                     {this.renderProfile()}
                 </div>
                 <div className="repository-area">
                     {this.renderListRepository()}
-
                 </div>
             </div>
         )

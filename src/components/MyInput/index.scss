@@ -11,12 +11,26 @@
         @include d( m ){
             max-width: 500px;
         }
+        @include d( s ){
+            max-width: 60vw;
+        }
     }
     a{
         display: flex;
     }
 }
+.result .my-input{
+    @include d( s ){
+        width: 280px;
+    }
+}
 
 span.search-btn{
     background: $color-principal;
+    &:hover{
+        background-color: darken( $color-principal, 15%);
+    }
+    &:active{
+        box-shadow: unset;
+    }
 }

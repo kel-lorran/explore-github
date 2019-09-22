@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function( props){
+export default function MyList( props){
     return(
         <ul>
             { props.children.map( (e, i) => (
-                <div key={`teste-${i}`}>
+                <div key={`${props.keyName}-item-${i}`}>
                     {e}
                 </div>
             ))}
