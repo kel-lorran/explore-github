@@ -2,7 +2,6 @@
 
 .result{
     &.layout{
-        height: 100vh;
         display: grid;
 
         grid-template-columns: 340px auto ;
@@ -13,7 +12,7 @@
             'q3 q4';
 
         @include d( s ){
-            grid-template-columns: auto ;
+            grid-template-columns: 1fr ;
             grid-template-rows: 75px 75px auto auto;
 
             grid-template-areas:
