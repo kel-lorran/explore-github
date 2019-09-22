@@ -38,11 +38,12 @@ class PgResult extends React.Component{
         try{
             this.setState( {isLoading: true})
             let result = await axios.get( `https://api.github.com/users/${paramUser}` )
-            user.name = result.data.name;
-            user.avatarUrl = result.data['avatar_url'];
-            user.company = result.data.company;
-            user.location = result.data.location;
-            user.followers = result.data.followers;
+            user.name = result.data.name
+            user.login = result.data.login
+            user.avatarUrl = result.data['avatar_url']
+            user.company = result.data.company
+            user.location = result.data.location
+            user.followers = result.data.followers
             let repositories = await axios.get( `https://api.github.com/users/${paramUser}/repos` )
 
             user.repositories = repositories.data.map( (e, i) => new Repository( e.name, e.description, e['stargazers_count'], e['html_url']))
