@@ -96,6 +96,7 @@ class PgResult extends React.Component{
                             title={dataOfRepository.name}
                             description={dataOfRepository.description}
                             numStar={dataOfRepository.star}
+                            forceOverflow={true}
                         />)
                     }
                 </MyList>
